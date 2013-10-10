@@ -1,0 +1,27 @@
+<Script>
+	$(function() {
+	   $('#flash').delay(5000).fadeOut('normal', function() {
+	      
+	   });
+	});
+</Script>
+<div>
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %> fade in" id="flash">
+    	
+      <a href="#" data-dismiss="alert" class="close">×</a>
+      <h4><%= value %></h4>
+      
+      <% if defined? errors then %>
+	  	<% if errors != false %>
+	      	<% errors.messages.each do |key,value| %>
+				<% value.each do |msg| %>
+					<%= msg %><br/>
+				<% end %>
+			<% end %>
+		<% end %>
+      	
+      <% end %>
+    </div>
+  <% end %>
+</div>
